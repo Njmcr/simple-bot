@@ -214,6 +214,7 @@ discordBot.on("messageCreate", async (message) => {
     if(message.content.includes(' logged o')) {
       toLoginsChat(message.content);
       await message.delete();
+     }
   } 
 });
 

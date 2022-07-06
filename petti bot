@@ -216,7 +216,7 @@ bot.on('chat', async (username, message, translate, raw, matches) => {
     } else if(chat === 'Help') {
       toMiscChat(`${raw}`)
     } else if(chat === 'PVP') {
-      toMiscChat(`${raw}`)
+      toPvPChat(`${raw}`)
     } else if(chat === 'Kingdom') {
       toKingdomChat(`${raw}`)
     }

@@ -24,6 +24,7 @@ const kingdomChannelID = '';
 const miscChannelID = '';
 const commandsChannelID = '';
 const loginsChannelID = '';
+const pvpChannelID = '';
 
 app.listen(3000, () => {
   console.log("Project is running!");
@@ -104,47 +105,59 @@ async function toLoginsChat(msg) {
   });
 }
 
+async function toPvPChat(msg) {
+  await discordBot.guilds.cache.get(discordServerID).channels.fetch();
+  return discordBot.guilds.cache.get(discordServerID).channels.cache.get(pvpChannelID).send({
+    content: msg,
+  });
+}
+
 discordBot.on('messageCreate', async (message) => {
     if (message.channel.id === chatChannelID) {
-      if(message.author.id === '530880318463541248') {
+      if(message.author.id === '2832449246760796168') {
         bot.chat(`${message.content}`);
         await message.delete();
       }
     } else if (message.channel.id === factionChannelID) {
-        if(message.author.id === '530880318463541248') {
+        if(message.author.id === '283244924676079616') {
           bot.chat(`f: ${message.content}`);
           await message.delete();
       }
     } else if (message.channel.id === generalChannelID) {
-        if(message.author.id === '530880318463541248') {
+        if(message.author.id === '283244924676079616') {
           bot.chat(`g: ${message.content}`);
           await message.delete();
         }
       } else if (message.channel.id === allyChannelID) {
-          if(message.author.id === '530880318463541248') {
+          if(message.author.id === '283244924676079616') {
             bot.chat(`a: ${message.content}`);
             await message.delete();
           }
       } else if (message.channel.id === pmChannelID) {
-          if(message.author.id === '530880318463541248') {
+          if(message.author.id === '283244924676079616') {
             bot.chat(`${message.content}`);
             await message.delete();
           }
       } else if (message.channel.id === kingdomChannelID) {
-          if(message.author.id === '530880318463541248') {
+          if(message.author.id === '283244924676079616') {
             bot.chat(`k: ${message.content}`);
             await message.delete();
           }
       } else if (message.channel.id === miscChannelID) {
-          if(message.author.id === '530880318463541248') {
+          if(message.author.id === '283244924676079616') {
             bot.chat(`${message.content}`);
             await message.delete();
           }
     }  else if (message.channel.id === commandsChannelID) {
-          if(message.author.id === '530880318463541248') {
+          if(message.author.id === '283244924676079616') {
             bot.chat(`\/${message.content}`);
             await message.delete();
             toCommandsChat(`\/${message}`);
+          }
+    } else if (message.channel.id === pvpChannelID) {
+          if(message.author.id === '283244924676079616') {
+            bot.chat(`p: ${message.content}`);
+            await message.delete();
           }
     }
 })
